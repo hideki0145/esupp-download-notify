@@ -1,0 +1,57 @@
+require:
+  - rubocop-performance
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - Gemfile
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
+Naming/BlockForwarding:
+  EnforcedStyle: explicit
+
+Naming/InclusiveLanguage:
+  Enabled: true
+
+Naming/MethodParameterName:
+  AllowedNames: [cc, id, to]
+
+Style/ArrayCoercion:
+  Enabled: true
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/BlockComments:
+  Exclude:
+    - spec/spec_helper.rb
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never
