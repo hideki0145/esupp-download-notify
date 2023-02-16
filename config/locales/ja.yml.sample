@@ -1,0 +1,10 @@
+ja:
+  text_to_notify: |
+    [NEW] Magicサポートセンター ダウンロードリストが更新されました。
+    一覧の上位5件を表示します。
+
+    内容: %{content1} 登録日: %{created_date1}
+    内容: %{content2} 登録日: %{created_date2}
+    内容: %{content3} 登録日: %{created_date3}
+    内容: %{content4} 登録日: %{created_date4}
+    内容: %{content5} 登録日: %{created_date5}

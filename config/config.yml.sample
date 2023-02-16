@@ -1,0 +1,8 @@
+locale: ja
+login_url: https://
+download_url: https://
+username:
+password:
+slack_webhook: https://hooks.slack.com
+headless: true
+test: true

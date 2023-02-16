@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/esupp_download_notify'
+
+EsuppDownloadNotify.run
