@@ -75,7 +75,10 @@ module EsuppDownloadNotify
 
     def create_driver
       options = Selenium::WebDriver::Chrome::Options.new
-      options.add_argument('--headless') if CONFIG[:headless]
+      options.add_argument('--no-sandbox')
+      options.add_argument('--disable-dev-shm-usage')
+      options.add_argument('--disable-gpu')
+      options.add_argument('--headless=new') if CONFIG[:headless]
       driver = Selenium::WebDriver.for(:chrome, options: options)
       driver.manage.timeouts.implicit_wait = 500
       driver
