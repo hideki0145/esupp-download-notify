@@ -1,7 +1,7 @@
 require 'yaml'
 require 'i18n'
 require 'open-uri'
-require 'webdrivers'
+require 'selenium-webdriver'
 
 module EsuppDownloadNotify
   CONFIG = YAML.load_file('./config/config.yml').transform_keys(&:to_sym).freeze
@@ -58,8 +58,8 @@ module EsuppDownloadNotify
 
         td = tr.find_elements(tag_name: 'td')
 
-        result["content#{i}".to_sym] = td[1].text.strip
-        result["created_date#{i}".to_sym] = td[2].text.strip
+        result[:"content#{i}"] = td[1].text.strip
+        result[:"created_date#{i}"] = td[2].text.strip
       end
     end
 
@@ -92,7 +92,18 @@ module EsuppDownloadNotify
       password1.send_keys(CONFIG[:password])
       submit_button.click
 
-      driver.switch_to.alert.accept
+      accept_alert_if_present(driver)
+    end
+
+    def accept_alert_if_present(driver)
+      wait = Selenium::WebDriver::Wait.new(
+        timeout: 3,
+        ignore: Selenium::WebDriver::Error::NoSuchAlertError
+      )
+      alert = wait.until { driver.switch_to.alert }
+      alert.accept
+    rescue Selenium::WebDriver::Error::TimeoutError
+      nil
     end
 
     def download(driver)
@@ -103,6 +114,7 @@ module EsuppDownloadNotify
     end
 
     SYSTEM_DATA_PATH = './config/system_data.yml'.freeze
+    private_constant :SYSTEM_DATA_PATH
     def load_system_data
       File.open(SYSTEM_DATA_PATH, 'w') unless File.exist?(SYSTEM_DATA_PATH)
       File.open(SYSTEM_DATA_PATH, 'r') { |f| YAML.safe_load(f) }&.transform_keys(&:to_sym)

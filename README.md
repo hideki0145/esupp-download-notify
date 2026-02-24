@@ -5,7 +5,7 @@ Magicサポートセンターのダウンロードリスト更新状況を通知
 ## 動作環境
 
 - Ruby
-  > [asdf](https://asdf-vm.com/#/core-manage-asdf) を参考にしてインストールしてください。
+  > [mise](https://mise.jdx.dev/) を参考にしてインストールしてください。
 - Google Chrome Stable
   > [google-chrome-stable_current_amd64.deb](https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb) をダウンロードして `apt` コマンドでインストールしてください。
 
