@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '4.0.1'
+ruby file: ".ruby-version"
 
 gem 'i18n'
 gem 'open-uri'
@@ -11,4 +11,5 @@ gem 'whenever', require: false
 group :development do
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
+  gem 'rubocop-i18n', require: false
 end

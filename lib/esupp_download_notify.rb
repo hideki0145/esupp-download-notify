@@ -119,12 +119,14 @@ module EsuppDownloadNotify
     SYSTEM_DATA_PATH = './config/system_data.yml'.freeze
     private_constant :SYSTEM_DATA_PATH
     def load_system_data
-      File.open(SYSTEM_DATA_PATH, 'w') unless File.exist?(SYSTEM_DATA_PATH)
+      File.write(SYSTEM_DATA_PATH, '') unless File.exist?(SYSTEM_DATA_PATH)
       File.open(SYSTEM_DATA_PATH, 'r') { |f| YAML.safe_load(f) }&.transform_keys(&:to_sym)
     end
 
     def save_system_data(data)
-      YAML.dump(data.transform_keys(&:to_s), File.open(SYSTEM_DATA_PATH, 'w'))
+      File.open(SYSTEM_DATA_PATH, 'w') do |file|
+        YAML.dump(data.transform_keys(&:to_s), file)
+      end
     end
   end
 end
